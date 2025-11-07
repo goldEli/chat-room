@@ -19,6 +19,12 @@ async function bootstrap() {
     prefix: '/uploads/',
   });
 
+  // Serve React frontend statically
+  app.useStaticAssets(join(__dirname, '..', 'public'), {
+    index: 'index.html',
+    maxAge: '1y',
+  });
+
   // Global validation pipe
   app.useGlobalPipes(new ValidationPipe());
 

@@ -9,11 +9,10 @@ import {
 import { FileInterceptor, FilesInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
-import { Response } from 'express';
-import { v4 as uuidv4 } from 'uuid';
+import { randomUUID } from 'crypto';
 
 const getUniqueFileName = (file: Express.Multer.File): string => {
-  const uniqueSuffix = uuidv4();
+  const uniqueSuffix = randomUUID();
   return `${uniqueSuffix}${extname(file.originalname)}`;
 };
 
